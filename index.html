@@ -12,33 +12,183 @@
     }
     h1 {
       color: #333;
+      text-align: center;
     }
     .member {
       background: #fff;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-      .avatar {
-      max-width: 100px;
+    .avatar-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007bff;
+      transition: opacity 0.3s ease;
+    }
+    .avatar-placeholder {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .loading {
+      opacity: 0.5;
+    }
+    .member-info {
+      flex: 1;
+    }
+    .member-info h2 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .member-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .github-link {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .github-link:hover {
+      text-decoration: underline;
+    }
+    .upload-btn {
+      background: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .upload-btn:hover {
+      background: #218838;
+    }
+    .file-input {
+      display: none;
+    }
+    
+    @media (max-width: 600px) {
+      .member {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Our Team</h1>
 
-  <!-- 👇 Each student adds their member block here -->
-  <!-- Example:
   <div class="member">
-    <h2>Student Name</h2>
-    <p><strong>GitHub:</strong> @username</p>
-    <p><strong>Favorite Tech:</strong> JavaScript</p>
-    <p><strong>Fun Fact:</strong> I love cats!</p>
+    <div class="avatar-container" id="avatar-container-1">
+      <img src="https://avatars.githubusercontent.com/OduorSamuuel?v=4&s=200" 
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-1"
+           onerror="showFallbackAvatar(1)">
+      <div class="avatar-placeholder" id="fallback-avatar-1" style="display: none;">
+        S
+      </div>
+    </div>
+    <div class="member-info">
+      <h2>Student Name</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/OduorSamuuel" class="github-link" target="_blank">@OduorSamuuel</a></p>
+      <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
+      <p><strong>Fun Fact:</strong> I love coding</p>
+      <button class="upload-btn" onclick="refreshGitHubAvatar(1, 'OduorSamuuel')">
+        Refresh Avatar
+      </button>
+    </div>
   </div>
-  -->
-  
 
+  <script>
+    // Show fallback avatar if GitHub avatar fails to load
+    function showFallbackAvatar(memberId) {
+      const githubAvatar = document.getElementById(`github-avatar-${memberId}`);
+      const fallbackAvatar = document.getElementById(`fallback-avatar-${memberId}`);
+      
+      githubAvatar.style.display = 'none';
+      fallbackAvatar.style.display = 'flex';
+    }
+
+    // Refresh GitHub avatar (useful if user updates their GitHub profile picture)
+    function refreshGitHubAvatar(memberId, username) {
+      const githubAvatar = document.getElementById(`github-avatar-${memberId}`);
+      const fallbackAvatar = document.getElementById(`fallback-avatar-${memberId}`);
+      
+      // Add loading state
+      githubAvatar.classList.add('loading');
+      
+      // Add timestamp to force refresh
+      const timestamp = new Date().getTime();
+      githubAvatar.src = `https://avatars.githubusercontent.com/${username}?v=4&s=200&t=${timestamp}`;
+      
+      // Reset display states
+      githubAvatar.style.display = 'block';
+      fallbackAvatar.style.display = 'none';
+      
+      // Remove loading state after image loads
+      githubAvatar.onload = function() {
+        githubAvatar.classList.remove('loading');
+      };
+    }
+
+    // Function to add more team members dynamically
+    function addTeamMember(name, githubUsername, tech, funFact) {
+      const memberId = Date.now(); // Simple unique ID
+      const memberHTML = `
+        <div class="member">
+          <div class="avatar-container" id="avatar-container-${memberId}">
+            <img src="https://avatars.githubusercontent.com/${githubUsername}?v=4&s=200" 
+                 alt="GitHub Avatar" 
+                 class="avatar" 
+                 id="github-avatar-${memberId}"
+                 onerror="showFallbackAvatar(${memberId})">
+            <div class="avatar-placeholder" id="fallback-avatar-${memberId}" style="display: none;">
+              ${name.charAt(0).toUpperCase()}
+            </div>
+          </div>
+          <div class="member-info">
+            <h2>${name}</h2>
+            <p><strong>GitHub:</strong> <a href="https://github.com/${githubUsername}" class="github-link" target="_blank">@${githubUsername}</a></p>
+            <p><strong>Favorite Tech:</strong> ${tech}</p>
+            <p><strong>Fun Fact:</strong> ${funFact}</p>
+            <button class="upload-btn" onclick="refreshGitHubAvatar(${memberId}, '${githubUsername}')">
+              Refresh Avatar
+            </button>
+          </div>
+        </div>
+      `;
+      
+      document.body.insertAdjacentHTML('beforeend', memberHTML);
+    }
+
+    // Example: Uncomment to add another team member
+    // addTeamMember('Jane Doe', 'janedoe', 'React, Python', 'I love open source!');
+  </script>
 </body>
 </html>
-    
