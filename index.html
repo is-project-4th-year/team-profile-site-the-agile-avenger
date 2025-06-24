@@ -91,6 +91,21 @@
     .file-input {
       display: none;
     }
+    .image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  display: block;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-description {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.6;
+}
+
     
     @media (max-width: 600px) {
       .member {
@@ -170,6 +185,12 @@
       <p><strong>GitHub:</strong> <a href="https://github.com/Shekinah-Ntumba" class="github-link" target="_blank">@Shekinah-Ntumba</a></p>
       <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
       <p><strong>Fun Fact:</strong> I love coding</p>
+      <p><strong>Favorite Animal:</strong> Zebra</p>
+      <img src="./image/photo-1598755257130-c2aaca1f061c.jpeg" class="image" alt="Image">
+      <p class="image-description">
+        Zebra stripes come in different patterns, unique to each individual. Several theories have been proposed for the function of these patterns, with most evidence supporting them as a deterrent for biting flies. Zebras inhabit eastern and southern Africa and can be found in a variety of habitats such as savannahs, grasslands, woodlands, shrublands, and mountainous areas.
+      </p>
+
       <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'Shekinah-Ntumba')">
         Refresh Avatar
       </button>
