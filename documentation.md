@@ -2,7 +2,7 @@
 
 ---
 
-## Group Mmembers
+## Group Members
 
 - Shekinah Mpinguyabo Ntumba  
 - 
@@ -13,7 +13,7 @@
 ---
 
 
-## 2. What did you learn during the Githib lessons:
+## 2. What did you learn during the Github lessons:
 
 We learned how:
 
