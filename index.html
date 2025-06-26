@@ -12,16 +12,106 @@
     }
     h1 {
       color: #333;
+      text-align: center;
     }
     .member {
       background: #fff;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-      .avatar {
-      max-width: 100px;
+    .avatar-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007bff;
+      transition: opacity 0.3s ease;
+    }
+    .avatar-placeholder {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .loading {
+      opacity: 0.5;
+    }
+    .member-info {
+      flex: 1;
+    }
+    .member-info h2 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .member-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .github-link {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .github-link:hover {
+      text-decoration: underline;
+    }
+    .upload-btn {
+      background: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .upload-btn:hover {
+      background: #218838;
+    }
+    .file-input {
+      display: none;
+    }
+    .image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  display: block;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-description {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.6;
+}
+
+    
+    @media (max-width: 600px) {
+      .member {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -29,13 +119,206 @@
   <h1>Our Team</h1>
 
   <!-- 👇 Each student adds their member block here -->
-  <!-- Example:
+  <!-- Example: -->
   <div class="member">
-    <h2>Student Name</h2>
-    <p><strong>GitHub:</strong> @username</p>
-    <p><strong>Favorite Tech:</strong> JavaScript</p>
-    <p><strong>Fun Fact:</strong> I love cats!</p>
+
+    <div class="avatar-container" id="avatar-container-1">
+
+      <img src="https://avatars.githubusercontent.com/mercykiminza?v=4&s=200" 
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-1"
+           onerror="showFallbackAvatar(1)">
+      <div class="avatar-placeholder" id="fallback-avatar-1" style="display: none;">
+        M
+      </div>
+    </div>
+    <div class="member-info">
+
+      <h2>Mercy Kiminza</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/mercykiminza" class="github-link" target="_blank">@mercykiminza</a></p>
+      <p><strong>Favorite Tech:</strong> C++, JavaScript</p>
+      <p><strong>Fun Fact:</strong> I am in fourth year, first semester</p>
+      <button class="upload-btn" onclick="refreshGitHubAvatar(1, 'mercykiminza')">
+        Refresh Avatar
+      </button>
+    </div>
   </div>
+  
+
+
+  <div class="member">
+    <div class="avatar-container" id="avatar-container-2">
+      <img src="https://avatars.githubusercontent.com/oduorSamuuel?v=4&s=200" 
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-2"
+           onerror="showFallbackAvatar(2)">
+      <div class="avatar-placeholder" id="fallback-avatar-2" style="display: none;">
+        S
+      </div>
+    </div>
+    <div class="member-info">
+      <h2>Samuel Onyango</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/oduorSamuuel" class="github-link" target="_blank">@oduorSamuuel</a></p>
+      <p><strong>Favorite Tech:</strong> Springboot,React</p>
+      <p><strong>Fun Fact:</strong>  I love cats</p>
+          <p><strong>Favorite Animal:</strong> Caracal</p>
+      <img src="./image/caracal.jpg" class="image" alt="Image">
+      <p class="image-description">
+The name Caracal is derived from a Turkish word "karakulak" meaning "black ear." The Caracal was once trained for bird hunting in Iran and India. They were put into arenas containing a flock of pigeons, and wagers were made as to how many the cat would takedown. This is the origination of the expression "to put a cat amongst the pigeons." The Caracal is capable of leaping into the air and knocking down 10-12 birds at one time!
+      </p>
+
+      <button class="upload-btn" onclick="refreshGitHubAvatar(2, 'oduorSamuuel')">
+        Refresh Avatar
+      </button>
+    </div>
+  </div>
+  <div class="member">
+    <div class="avatar-container" id="avatar-container-3">
+      <img src="https://avatars.githubusercontent.com/Shekinah-Ntumba?v=4&s=200" 
+
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-3"
+           onerror="showFallbackAvatar(3)">
+      <div class="avatar-placeholder" id="fallback-avatar-3" style="display: none;">
+        S
+      </div>
+    </div>
+    <div class="member-info">
+      <h2>Shekinah Ntumba</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/Shekinah-Ntumba" class="github-link" target="_blank">@Shekinah-Ntumba</a></p>
+      <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
+      <p><strong>Fun Fact:</strong> I love coding</p>
+      <p><strong>Favorite Animal:</strong> Zebra</p>
+      <img src="./image/photo-1598755257130-c2aaca1f061c.jpeg" class="image" alt="Image">
+      <p class="image-description">
+        Zebra stripes come in different patterns, unique to each individual. Several theories have been proposed for the function of these patterns, with most evidence supporting them as a deterrent for biting flies. Zebras inhabit eastern and southern Africa and can be found in a variety of habitats such as savannahs, grasslands, woodlands, shrublands, and mountainous areas.
+      </p>
+
+      <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'Shekinah-Ntumba')">
+        Refresh Avatar
+      </button>
+    </div>
+  </div>
+    <div class="member">
+
+
+
+    <div class="avatar-container" id="avatar-container-4">
+
+      <img src="https://avatars.githubusercontent.com/FirdawsM?v=4&s=200" 
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-4"
+           onerror="showFallbackAvatar(4)">
+      <div class="avatar-placeholder" id="fallback-avatar-4" style="display: none;">
+        M
+      </div>
+    </div>
+    <div class="member-info">
+
+    <h2>Mohammed Firdaws Alnuur</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/FirdawsM" class="github-link" target="_blank">@FirdawsM</a></p>
+    <p><strong>Favorite Tech:</strong> JavaScript</p>
+    <p><strong>Fun Fact:</strong>My computer crashes when it senses my confidence</p>
+     <img src="./image/OIP.jpeg" class="image" alt="Image">
+      <p class="image-description">
+Meerkats live in burrows in the ground. They are active during the day, except when hot during the afternoon sun. They also live in large family groups. The group is led by a female and a male. The meerkats are often all family. They get rid of fleas in each other's fur to become friends, which is called "grooming". Sometimes if a minor member is in trouble with the leader it will groom the leader to try and calm them down.      </p>
+      <button class="upload-btn" onclick="refreshGitHubAvatar(4, 'FirdawsM')">
+        Refresh Avatar
+      </button>
+    </div>
+  </div>
+  <!-- Add more team members as needed
+   <div class="member">
+    <div class="avatar-container" id="avatar-container-3">
+      <img src="https://avatars.githubusercontent.com/oduorSamuuel?v=4&s=200" 
+           alt="GitHub Avatar" 
+           class="avatar" 
+           id="github-avatar-3"
+           onerror="showFallbackAvatar(3)">
+      <div class="avatar-placeholder" id="fallback-avatar-3" style="display: none;">
+        S
+      </div>
+    </div>
+    <div class="member-info">
+      <h2>User 3</h2>
+      <p><strong>GitHub:</strong> <a href="https://github.com/username" class="github-link" target="_blank">@oduorSamuuel</a></p>
+      <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
+      <p><strong>Fun Fact:</strong>  I love pets</p>
+      <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'username')">
+        Refresh Avatar
+      </button>
+    </div>
+  </div>
+ -->
+  <script>
+    // Show fallback avatar if GitHub avatar fails to load
+    function showFallbackAvatar(memberId) {
+      const githubAvatar = document.getElementById(`github-avatar-${memberId}`);
+      const fallbackAvatar = document.getElementById(`fallback-avatar-${memberId}`);
+      
+      githubAvatar.style.display = 'none';
+      fallbackAvatar.style.display = 'flex';
+    }
+
+    // Refresh GitHub avatar (useful if user updates their GitHub profile picture)
+    function refreshGitHubAvatar(memberId, username) {
+      const githubAvatar = document.getElementById(`github-avatar-${memberId}`);
+      const fallbackAvatar = document.getElementById(`fallback-avatar-${memberId}`);
+      
+      // Add loading state
+      githubAvatar.classList.add('loading');
+      
+      // Add timestamp to force refresh
+      const timestamp = new Date().getTime();
+      githubAvatar.src = `https://avatars.githubusercontent.com/${username}?v=4&s=200&t=${timestamp}`;
+      
+      // Reset display states
+      githubAvatar.style.display = 'block';
+      fallbackAvatar.style.display = 'none';
+      
+      // Remove loading state after image loads
+      githubAvatar.onload = function() {
+        githubAvatar.classList.remove('loading');
+      };
+    }
+
+    // Function to add more team members dynamically
+    function addTeamMember(name, githubUsername, tech, funFact) {
+      const memberId = Date.now(); // Simple unique ID
+      const memberHTML = `
+        <div class="member">
+          <div class="avatar-container" id="avatar-container-${memberId}">
+            <img src="https://avatars.githubusercontent.com/${githubUsername}?v=4&s=200" 
+                 alt="GitHub Avatar" 
+                 class="avatar" 
+                 id="github-avatar-${memberId}"
+                 onerror="showFallbackAvatar(${memberId})">
+            <div class="avatar-placeholder" id="fallback-avatar-${memberId}" style="display: none;">
+              ${name.charAt(0).toUpperCase()}
+            </div>
+          </div>
+          <div class="member-info">
+            <h2>${name}</h2>
+            <p><strong>GitHub:</strong> <a href="https://github.com/${githubUsername}" class="github-link" target="_blank">@${githubUsername}</a></p>
+            <p><strong>Favorite Tech:</strong> ${tech}</p>
+            <p><strong>Fun Fact:</strong> ${funFact}</p>
+            <button class="upload-btn" onclick="refreshGitHubAvatar(${memberId}, '${githubUsername}')">
+              Refresh Avatar
+            </button>
+          </div>
+        </div>
+      `;
+      
+      document.body.insertAdjacentHTML('beforeend', memberHTML);
+    }
+
+    // Example: Uncomment to add another team member
+    // addTeamMember('Jane Doe', 'janedoe', 'React, Python', 'I love open source!');
+  </script>
   -->
   <div class="member">
     <h2>Lydiah Mbugua</h2>
@@ -46,4 +329,3 @@
 
 </body>
 </html>
-    
