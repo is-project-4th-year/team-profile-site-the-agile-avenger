@@ -55,3 +55,4 @@ Commit small, logical changes.
 Pull regularly to avoid conflicts.
 Use branches for features and bug fixes.
 
+**Addios Muchachos!**
