@@ -21,7 +21,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 20px;
     }
     .avatar-container {
@@ -56,6 +56,12 @@
     .loading {
       opacity: 0.5;
     }
+    .member-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
     .member-info {
       flex: 1;
     }
@@ -84,6 +90,7 @@
       font-size: 14px;
       margin-top: 10px;
       transition: background-color 0.3s ease;
+      align-self: flex-start;
     }
     .upload-btn:hover {
       background: #218838;
@@ -91,26 +98,93 @@
     .file-input {
       display: none;
     }
-    .image {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  display: block;
-  margin-top: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
 
-.image-description {
-  margin-top: 10px;
-  color: #555;
-  line-height: 1.6;
-}
-
+    /* New animal section styling */
+    .animal-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+      border: 1px solid #dee2e6;
+    }
     
-    @media (max-width: 600px) {
+    .animal-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .animal-header h3 {
+      margin: 0;
+      color: #495057;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .animal-emoji {
+      font-size: 1.5em;
+    }
+    
+    .animal-content {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    
+    .animal-image {
+      width: 200px;
+      height: 150px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .animal-image:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .animal-description {
+      flex: 1;
+      color: #555;
+      line-height: 1.6;
+      font-size: 0.95em;
+      text-align: justify;
+    }
+    
+    @media (max-width: 768px) {
       .member {
         flex-direction: column;
         text-align: center;
+      }
+      
+      .animal-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .animal-image {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+      }
+      
+      .animal-description {
+        text-align: left;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .animal-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
       }
     }
   </style>
@@ -121,9 +195,7 @@
   <!-- 👇 Each student adds their member block here -->
   <!-- Example: -->
   <div class="member">
-
     <div class="avatar-container" id="avatar-container-1">
-
       <img src="https://avatars.githubusercontent.com/mercykiminza?v=4&s=200" 
            alt="GitHub Avatar" 
            class="avatar" 
@@ -133,19 +205,18 @@
         M
       </div>
     </div>
-    <div class="member-info">
-
-      <h2>Mercy Kiminza</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/mercykiminza" class="github-link" target="_blank">@mercykiminza</a></p>
-      <p><strong>Favorite Tech:</strong> C++, JavaScript</p>
-      <p><strong>Fun Fact:</strong> I am in fourth year, first semester</p>
-      <button class="upload-btn" onclick="refreshGitHubAvatar(1, 'mercykiminza')">
-        Refresh Avatar
-      </button>
+    <div class="member-content">
+      <div class="member-info">
+        <h2>Mercy Kiminza</h2>
+        <p><strong>GitHub:</strong> <a href="https://github.com/mercykiminza" class="github-link" target="_blank">@mercykiminza</a></p>
+        <p><strong>Favorite Tech:</strong> C++, JavaScript</p>
+        <p><strong>Fun Fact:</strong> I am in fourth year, first semester</p>
+        <button class="upload-btn" onclick="refreshGitHubAvatar(1, 'mercykiminza')">
+          Refresh Avatar
+        </button>
+      </div>
     </div>
   </div>
-  
-
 
   <div class="member">
     <div class="avatar-container" id="avatar-container-2">
@@ -158,26 +229,35 @@
         S
       </div>
     </div>
-    <div class="member-info">
-      <h2>Samuel Onyango</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/oduorSamuuel" class="github-link" target="_blank">@oduorSamuuel</a></p>
-      <p><strong>Favorite Tech:</strong> Springboot,React</p>
-      <p><strong>Fun Fact:</strong>  I love cats</p>
-          <p><strong>Favorite Animal:</strong> Caracal</p>
-      <img src="./image/caracal.jpg" class="image" alt="Image">
-      <p class="image-description">
-The name Caracal is derived from a Turkish word "karakulak" meaning "black ear." The Caracal was once trained for bird hunting in Iran and India. They were put into arenas containing a flock of pigeons, and wagers were made as to how many the cat would takedown. This is the origination of the expression "to put a cat amongst the pigeons." The Caracal is capable of leaping into the air and knocking down 10-12 birds at one time!
-      </p>
-
-      <button class="upload-btn" onclick="refreshGitHubAvatar(2, 'oduorSamuuel')">
-        Refresh Avatar
-      </button>
+    <div class="member-content">
+      <div class="member-info">
+        <h2>Samuel Onyango</h2>
+        <p><strong>GitHub:</strong> <a href="https://github.com/oduorSamuuel" class="github-link" target="_blank">@oduorSamuuel</a></p>
+        <p><strong>Favorite Tech:</strong> Springboot, React</p>
+        <p><strong>Fun Fact:</strong> I love cats</p>
+        <p><strong>Favorite Animal:</strong> Caracal</p>
+        <button class="upload-btn" onclick="refreshGitHubAvatar(2, 'oduorSamuuel')">
+          Refresh Avatar
+        </button>
+      </div>
+      
+      <div class="animal-section">
+        <div class="animal-header">
+          <h3><span class="animal-emoji"></span> Meet the Caracal</h3>
+        </div>
+        <div class="animal-content">
+          <img src="./image/caracal.jpg" class="animal-image" alt="Caracal">
+          <div class="animal-description">
+            The name Caracal is derived from a Turkish word "karakulak" meaning "black ear." The Caracal was once trained for bird hunting in Iran and India. They were put into arenas containing a flock of pigeons, and wagers were made as to how many the cat would takedown. This is the origination of the expression "to put a cat amongst the pigeons." The Caracal is capable of leaping into the air and knocking down 10-12 birds at one time!
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="member">
     <div class="avatar-container" id="avatar-container-3">
       <img src="https://avatars.githubusercontent.com/Shekinah-Ntumba?v=4&s=200" 
-
            alt="GitHub Avatar" 
            class="avatar" 
            id="github-avatar-3"
@@ -186,28 +266,34 @@ The name Caracal is derived from a Turkish word "karakulak" meaning "black ear."
         S
       </div>
     </div>
-    <div class="member-info">
-      <h2>Shekinah Ntumba</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/Shekinah-Ntumba" class="github-link" target="_blank">@Shekinah-Ntumba</a></p>
-      <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
-      <p><strong>Fun Fact:</strong> I love coding</p>
-      <p><strong>Favorite Animal:</strong> Zebra</p>
-      <img src="./image/photo-1598755257130-c2aaca1f061c.jpeg" class="image" alt="Image">
-      <p class="image-description">
-        Zebra stripes come in different patterns, unique to each individual. Several theories have been proposed for the function of these patterns, with most evidence supporting them as a deterrent for biting flies. Zebras inhabit eastern and southern Africa and can be found in a variety of habitats such as savannahs, grasslands, woodlands, shrublands, and mountainous areas.
-      </p>
-
-      <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'Shekinah-Ntumba')">
-        Refresh Avatar
-      </button>
+    <div class="member-content">
+      <div class="member-info">
+        <h2>Shekinah Ntumba</h2>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Shekinah-Ntumba" class="github-link" target="_blank">@Shekinah-Ntumba</a></p>
+        <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
+        <p><strong>Fun Fact:</strong> I love coding</p>
+        <p><strong>Favorite Animal:</strong> Zebra</p>
+        <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'Shekinah-Ntumba')">
+          Refresh Avatar
+        </button>
+      </div>
+      
+      <div class="animal-section">
+        <div class="animal-header">
+          <h3><span class="animal-emoji"></span> Meet the Zebra</h3>
+        </div>
+        <div class="animal-content">
+          <img src="./image/photo-1598755257130-c2aaca1f061c.jpeg" class="animal-image" alt="Zebra">
+          <div class="animal-description">
+            Zebra stripes come in different patterns, unique to each individual. Several theories have been proposed for the function of these patterns, with most evidence supporting them as a deterrent for biting flies. Zebras inhabit eastern and southern Africa and can be found in a variety of habitats such as savannahs, grasslands, woodlands, shrublands, and mountainous areas.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="member">
 
-
-
+  <div class="member">
     <div class="avatar-container" id="avatar-container-4">
-
       <img src="https://avatars.githubusercontent.com/FirdawsM?v=4&s=200" 
            alt="GitHub Avatar" 
            class="avatar" 
@@ -217,26 +303,33 @@ The name Caracal is derived from a Turkish word "karakulak" meaning "black ear."
         M
       </div>
     </div>
-    <div class="member-info">
-
-    <h2>Mohammed Firdaws Alnuur</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/FirdawsM" class="github-link" target="_blank">@FirdawsM</a></p>
-    <p><strong>Favorite Tech:</strong> JavaScript</p>
-    <p><strong>Fun Fact:</strong>My computer crashes when it senses my confidence</p>
-     <img src="./image/OIP.jpeg" class="image" alt="Image">
-      <p class="image-description">
-Meerkats live in burrows in the ground. They are active during the day, except when hot during the afternoon sun. They also live in large family groups. The group is led by a female and a male. The meerkats are often all family. They get rid of fleas in each other's fur to become friends, which is called "grooming". Sometimes if a minor member is in trouble with the leader it will groom the leader to try and calm them down.      </p>
-      <button class="upload-btn" onclick="refreshGitHubAvatar(4, 'FirdawsM')">
-        Refresh Avatar
-      </button>
+    <div class="member-content">
+      <div class="member-info">
+        <h2>Mohammed Firdaws Alnuur</h2>
+        <p><strong>GitHub:</strong> <a href="https://github.com/FirdawsM" class="github-link" target="_blank">@FirdawsM</a></p>
+        <p><strong>Favorite Tech:</strong> JavaScript</p>
+        <p><strong>Fun Fact:</strong> My computer crashes when it senses my confidence</p>
+        <button class="upload-btn" onclick="refreshGitHubAvatar(4, 'FirdawsM')">
+          Refresh Avatar
+        </button>
+      </div>
+      
+      <div class="animal-section">
+        <div class="animal-header">
+          <h3><span class="animal-emoji"></span> Meet the Meerkat</h3>
+        </div>
+        <div class="animal-content">
+          <img src="./image/OIP.jpeg" class="animal-image" alt="Meerkat">
+          <div class="animal-description">
+            Meerkats live in burrows in the ground. They are active during the day, except when hot during the afternoon sun. They also live in large family groups. The group is led by a female and a male. The meerkats are often all family. They get rid of fleas in each other's fur to become friends, which is called "grooming". Sometimes if a minor member is in trouble with the leader it will groom the leader to try and calm them down.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-      <div class="member">
 
-
-
+  <div class="member">
     <div class="avatar-container" id="avatar-container-5">
-
       <img src="https://avatars.githubusercontent.com/lydiahw?v=4&s=200" 
            alt="GitHub Avatar" 
            class="avatar" 
@@ -246,43 +339,19 @@ Meerkats live in burrows in the ground. They are active during the day, except w
         L
       </div>
     </div>
-    <div class="member-info">
-
-     <h2>Lydiah Mbugua</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/lydiahw" class="github-link" target="_blank">@lydiahw</a></p>
-    <p><strong>Favorite Tech:</strong> JavaScript</p>
-    <p><strong>Fun Fact:</strong> Michael Scott is the World's Best Boss</p>
-  
-
-      <button class="upload-btn" onclick="refreshGitHubAvatar(5, 'lydiahw')">
-        Refresh Avatar
-      </button>
-    </div>
-  </div>
-
-  <!-- Add more team members as needed
-   <div class="member">
-    <div class="avatar-container" id="avatar-container-3">
-      <img src="https://avatars.githubusercontent.com/oduorSamuuel?v=4&s=200" 
-           alt="GitHub Avatar" 
-           class="avatar" 
-           id="github-avatar-3"
-           onerror="showFallbackAvatar(3)">
-      <div class="avatar-placeholder" id="fallback-avatar-3" style="display: none;">
-        S
+    <div class="member-content">
+      <div class="member-info">
+        <h2>Lydiah Mbugua</h2>
+        <p><strong>GitHub:</strong> <a href="https://github.com/lydiahw" class="github-link" target="_blank">@lydiahw</a></p>
+        <p><strong>Favorite Tech:</strong> JavaScript</p>
+        <p><strong>Fun Fact:</strong> Michael Scott is the World's Best Boss</p>
+        <button class="upload-btn" onclick="refreshGitHubAvatar(5, 'lydiahw')">
+          Refresh Avatar
+        </button>
       </div>
     </div>
-    <div class="member-info">
-      <h2>User 3</h2>
-      <p><strong>GitHub:</strong> <a href="https://github.com/username" class="github-link" target="_blank">@oduorSamuuel</a></p>
-      <p><strong>Favorite Tech:</strong> Java, JavaScript</p>
-      <p><strong>Fun Fact:</strong>  I love pets</p>
-      <button class="upload-btn" onclick="refreshGitHubAvatar(3, 'username')">
-        Refresh Avatar
-      </button>
-    </div>
   </div>
- -->
+
   <script>
     // Show fallback avatar if GitHub avatar fails to load
     function showFallbackAvatar(memberId) {
@@ -330,14 +399,16 @@ Meerkats live in burrows in the ground. They are active during the day, except w
               ${name.charAt(0).toUpperCase()}
             </div>
           </div>
-          <div class="member-info">
-            <h2>${name}</h2>
-            <p><strong>GitHub:</strong> <a href="https://github.com/${githubUsername}" class="github-link" target="_blank">@${githubUsername}</a></p>
-            <p><strong>Favorite Tech:</strong> ${tech}</p>
-            <p><strong>Fun Fact:</strong> ${funFact}</p>
-            <button class="upload-btn" onclick="refreshGitHubAvatar(${memberId}, '${githubUsername}')">
-              Refresh Avatar
-            </button>
+          <div class="member-content">
+            <div class="member-info">
+              <h2>${name}</h2>
+              <p><strong>GitHub:</strong> <a href="https://github.com/${githubUsername}" class="github-link" target="_blank">@${githubUsername}</a></p>
+              <p><strong>Favorite Tech:</strong> ${tech}</p>
+              <p><strong>Fun Fact:</strong> ${funFact}</p>
+              <button class="upload-btn" onclick="refreshGitHubAvatar(${memberId}, '${githubUsername}')">
+                Refresh Avatar
+              </button>
+            </div>
           </div>
         </div>
       `;
@@ -348,8 +419,5 @@ Meerkats live in burrows in the ground. They are active during the day, except w
     // Example: Uncomment to add another team member
     // addTeamMember('Jane Doe', 'janedoe', 'React, Python', 'I love open source!');
   </script>
-
-
-
 </body>
 </html>
