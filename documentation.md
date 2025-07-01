@@ -6,8 +6,8 @@
 
 - Shekinah Mpinguyabo Ntumba  
 - Mohammed Firdaws Alnuur 
-- Lydiah Wanjiku Mbugua
 - 
+- Lydiah Wanjiku Mbugua
 - 
 
 ---
