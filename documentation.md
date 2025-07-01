@@ -32,7 +32,7 @@ We learned how:
 
 - I explored how to merge feature branches into the main branch, understanding when to rebase versus merge depending on the workflow needs.
 
-- These lessons deepened my appreciation for GitHub’s collaborative features and taught me how disciplined workflows can reduce friction in team-based software development.
+- These lessons deepened my appreciation for GitHub’s collaborative features and taught me how disciplined workflows can reduce friction in team-based software development. 
  
  **Mercy Kiminza**
  **What I learnt:**
