@@ -25,6 +25,10 @@ We learned how:
 
 - To solve a merge conflict and having to approve a PR. I learnt how to rebase a commit and merge it to the main branch.
 - 
+**Samuel Onyango**
+
+- To solve a merge conflict and having to approve a PR. I learnt how to rebase a commit and merge it to the main branch.
+- 
 - 
  **Mercy Kiminza**
  **What I learnt:**
