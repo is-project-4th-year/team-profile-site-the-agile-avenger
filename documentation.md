@@ -24,9 +24,13 @@ We learned how:
 **Firdaws Mohammed**
 
 - I learned how to identify and resolve merge conflicts, ensuring clean integration of code when collaborating across branches. This strengthened my understanding of how Git maintains history and handles concurrent edits.
+
 - I became proficient in approving and reviewing pull requests, learning how to assess code contributions, provide feedback, and maintain code quality across our project.
+
 - I practiced rebasing commits to rewrite history in a linear, organized way, which helped simplify merges and keep our commit tree clean.
+
 - I explored how to merge feature branches into the main branch, understanding when to rebase versus merge depending on the workflow needs.
+
 - These lessons deepened my appreciation for GitHub’s collaborative features and taught me how disciplined workflows can reduce friction in team-based software development.
 
  **Mercy Kiminza**
