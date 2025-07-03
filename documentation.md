@@ -3,10 +3,12 @@
 ---
 
 ## Group Mmembers
-
+These are the group members of Agile-Avengers:
 - Shekinah Mpinguyabo Ntumba  
 - Mohammed Firdaws Alnuur 
-- 
+- Mercy Kiminza
+- Samuel Onyango
+- Lydia Wanjiru
 - 
 - 
 
